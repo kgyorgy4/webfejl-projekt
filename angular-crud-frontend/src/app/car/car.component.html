@@ -1,0 +1,71 @@
+<div class="container mt-4" >
+
+    <div class="card">
+        <h1>{{currentAction}}</h1>
+
+<form>
+    <div class="form-group">
+      <label>Rendszám</label>
+      <input type="text" [(ngModel)]="rendszam" [(ngModel)]="rendszam" [ngModelOptions]="{standalone: true}" class="form-control" id="rendszam" placeholder="Enter rendszám">
+
+    </div>
+
+    <div class="form-group">
+        <label>Szín</label>
+        <input type="text" [(ngModel)]="szin" [(ngModel)]="szin" [ngModelOptions]="{standalone: true}" class="form-control" id="szin" placeholder="Enter szin">
+  
+      </div>
+
+      <div class="form-group">
+        <label>Tulaj</label>
+        <input type="text" [(ngModel)]="employee_id" [(ngModel)]="employee_id" [ngModelOptions]="{standalone: true}" class="form-control" id="employee_id" placeholder="Enter tulaj id">
+  
+      </div>
+    
+    <button type="submit" class="btn btn-primary mt-4" (click)="add()" >Submit</button>
+    <button *ngIf="editing" type="button" class="btn btn-danger mt-4" (click)="cancelUpdate()">Cancel</button>
+  </form>
+</div>
+<div>
+
+
+    <div class="container mt-4" >
+
+        <h1>Car Table</h1>
+
+
+
+
+    <table class="table">
+        <thead>
+         <h1 *ngIf="!isResultLoaded">Loading...</h1>
+         
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Rendszám</th>
+            <th scope="col">Szín</th>     
+            <th scope="col">Tulaj ID</th>          
+            <th scope="col">Option</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let CarItem of CarArray">
+
+            <th scope="row">{{CarItem.id  }}</th>
+            <td>{{CarItem.rendszam }}</td>
+            <td>{{CarItem.szin }}</td>     
+            <td>{{CarItem.employee_id }}</td>          
+
+            <td>
+              <button type="button" class="btn btn-success" (click)="setUpdate(CarItem)">Edit</button>
+              
+              <button type="button" class="btn btn-danger" (click)="setDelete(CarItem)">Delete</button>
+            
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+
+
+    </div>
